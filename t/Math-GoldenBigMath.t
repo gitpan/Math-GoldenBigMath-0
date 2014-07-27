@@ -276,12 +276,12 @@ sub TestAddition {
     is (Math::GoldenBigMath::Addition ("-$s6", "+$s12")->GetValue(), '-1234567890123456788999e-2', "-$s6 +  $s12");
     is (Math::GoldenBigMath::Addition ("-$s6", "-$s12")->GetValue(), '-1234567890123456789001e-2', "-$s6 + -$s12");
 
-    AdditionDoubleLoop(113, 111);
+    # AdditionDoubleLoop(113, 111);
     # AdditionDoubleLoop(100, 20);
     # AdditionDoubleLoop( 20, 20);
     # AdditionDoubleLoop( 20, 12);
     # AdditionDoubleLoop( 10, 10);
-    # AdditionDoubleLoop( 6, 5);
+    AdditionDoubleLoop( 6, 5);
 
     $a = new Math::GoldenBigMath('001234567890.000010000E+300001');
     $b = new Math::GoldenBigMath('-123456789.00000E+300002');
@@ -424,12 +424,12 @@ sub TestMultiplication {
     is (Math::GoldenBigMath::Multiplication( 2, -3)->GetValue(),  '-6e+0', ' 2 * -3'); 
     is (Math::GoldenBigMath::Multiplication(-2, -3)->GetValue(),  '+6e+0', '-2 * -3');
 
-    MultiplicationDoubleLoop(113, 111);
+    # MultiplicationDoubleLoop(113, 111);
     # MultiplicationDoubleLoop(100, 20);
     # MultiplicationDoubleLoop( 20, 20);
     # MultiplicationDoubleLoop( 20, 12);
     # MultiplicationDoubleLoop( 10, 10);
-    # MultiplicationDoubleLoop( 6, 5);
+    MultiplicationDoubleLoop( 6, 5);
 
     my $z1 = '-31415927648267462591273462582862183462864e+34749';
     my $z2 =  '31415927648233578991273593972431987216509e-34601';

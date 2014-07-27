@@ -1,6 +1,8 @@
 Revision history for Perl extension Math::GoldenBigMath.
 
-0.01  Sun Apr  7 15:42:22 2013
+0.800  Sun Apr  7 15:42:22 2013
 	- original version; created by h2xs 1.23 with options
 		-X -n Math::GoldenBigMath
 
+0.801  Sun Jul 27 10:14:34 2014
+        - reduced test time by smaller loops in *.t

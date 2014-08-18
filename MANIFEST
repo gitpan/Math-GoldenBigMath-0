@@ -2,5 +2,6 @@ Changes
 Makefile.PL
 MANIFEST
 README
-t/Math-GoldenBigMath.t
 lib/Math/GoldenBigMath.pm
+t/Math-GoldenBigMath.t
+t/Math-GoldenBigMath_Exceptions.t

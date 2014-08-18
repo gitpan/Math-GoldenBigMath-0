@@ -4,7 +4,7 @@
 #
 # Test of GoldenBigMath
 #
-# Ralf Peine, Sat Feb 23 11:40:50 2013
+# Ralf Peine, Mon Aug 18 17:07:23 2014
 
 use strict;
 use warnings;
@@ -12,7 +12,6 @@ use warnings;
 $|=1;
 
 use Test::More;       # see done_testing()
-use Test::Exception;  # to handle exceptions
 
 BEGIN { use_ok( 'Math::GoldenBigMath' ); }
 
@@ -22,7 +21,7 @@ $testToStart = '' unless $testToStart;
 my $printTestStr = $testToStart;
 $printTestStr = "--- ALL ---" unless $printTestStr;
 
-print "# Start Tests: $printTestStr\n";
+# diag "Start Tests: $printTestStr\n";
 
 TestParsing()                               if !$testToStart  ||  lc($testToStart) eq 'parse';
 TestComparison()                            if !$testToStart  ||  lc($testToStart) eq 'compare';
@@ -33,6 +32,23 @@ TestBuildMultiplicationTableAsString ()     if !$testToStart  ||  lc($testToStar
 TestMultiplication()                        if !$testToStart  ||  lc($testToStart) eq 'mul';
 TestOperators()                             if !$testToStart  ||  lc($testToStart) eq 'op';
 
+
+if (!$testToStart  ||  lc($testToStart) eq 'exceptions') {
+	
+	my $test_exception_installed = eval {
+		require Test::Exception;
+		1;
+	};
+	
+	if ($test_exception_installed) {
+		require 'Math-GoldenBigMath_Exceptions.t';		
+	}
+	else {
+		diag ("Skip exception tests");
+	}
+	
+}
+
 done_testing();
 
 # --- Parsing Tests ---------------------------------------------------------------
@@ -40,7 +56,7 @@ done_testing();
 
 sub TestParsing {
 
-    print "# --- Parsing Tests ---------------------------------------------------------------\n";
+    diag "--- Parsing Tests ---------------------------------------------------------------";
 
     is(new Math::GoldenBigMath('0')->GetValue(), '+0e+0', 't 0');
     is(new Math::GoldenBigMath('1')->GetValue(), '+1e+0', 't 1');
@@ -102,11 +118,8 @@ sub TestParsing {
 #
 
 sub TestFormatting {
-    dies_ok { new Math::GoldenBigMath('001234567890.000010000e3001')->MoveDecimalPointToRight('');    } "MoveDecimalPointToRight('')";
-    dies_ok { new Math::GoldenBigMath('001234567890.000010000e3001')->MoveDecimalPointToRight('0');   } "MoveDecimalPointToRight('0')";
-    dies_ok { new Math::GoldenBigMath('001234567890.000010000e3001')->MoveDecimalPointToRight('-1');  } "MoveDecimalPointToRight('-1')";
-    dies_ok { new Math::GoldenBigMath('001234567890.000010000e3001')->MoveDecimalPointToRight('bla'); } "MoveDecimalPointToRight('bla')";
-    # print "# $@";
+
+    diag "--- Formatting Tests ---------------------------------------------------------------";
 
     is(new Math::GoldenBigMath('001234567890.000010000e3001')->MoveDecimalPointToRight(10)->GetValue(),
 	   '+1234567890000010000000000e+2986',   't 001234567890.000010000e3001 move right 10');
@@ -137,6 +150,9 @@ sub TestFormatting {
 #
 
 sub TestComparison {
+	
+	diag "--- Comparison Tests ---------------------------------------------------------------";
+
     is (Math::GoldenBigMath::Compare( 0,  0),  0, ' 0 == 0');
     is (Math::GoldenBigMath::Compare( 1,  0),  1, ' 1  >  0');
     is (Math::GoldenBigMath::Compare( 0,  1), -1, ' 0  <  1');
@@ -190,6 +206,9 @@ sub TestComparison {
 
 # --- Addition ---
 sub TestAddition {
+
+	diag "--- Addition Tests ---------------------------------------------------------------";
+
     is (Math::GoldenBigMath::Addition(0, 0)->GetValue(),  '+0e+0', '0 + 0'); 
     is (Math::GoldenBigMath::Addition(0, 1)->GetValue(),  '+1e+0', '1 + 0'); 
     is (Math::GoldenBigMath::Addition(1, 0)->GetValue(),  '+1e+0', '0 + 1'); 
@@ -291,6 +310,9 @@ sub TestAddition {
 
 # --- Subtraction ---
 sub TestSubtraction {
+
+	diag "--- Subtraction Tests ---------------------------------------------------------------";
+	
     is (Math::GoldenBigMath::Subtraction( 0,  0)->GetValue(),  '+0e+0', ' 0 -  0'); 
     is (Math::GoldenBigMath::Subtraction( 0,  1)->GetValue(),  '-1e+0', ' 0 -  1'); 
     is (Math::GoldenBigMath::Subtraction( 1,  0)->GetValue(),  '+1e+0', ' 1 -  0'); 
@@ -379,20 +401,18 @@ sub TestSubtraction {
 # --- to test the internal method creating a multiplication table
 sub TestBuildMultiplicationTableAsString {
 
-    dies_ok { Math::GoldenBigMath::buildMultiplicationTableAsString('');   } " * table ''  ";
-    dies_ok { Math::GoldenBigMath::buildMultiplicationTableAsString(' 0'); } " * table ' 0'";
-    dies_ok { Math::GoldenBigMath::buildMultiplicationTableAsString('0 '); } " * table '0 '";
-    dies_ok { Math::GoldenBigMath::buildMultiplicationTableAsString('+0'); } " * table '+0'";
-    dies_ok { Math::GoldenBigMath::buildMultiplicationTableAsString('a');  } " * table 'a' ";
+	diag "--- MultiplicationTable Tests ---------------------------------------------------------------";
 
     foreach my $i(0..23, 1237, 31415927) { # , 1234567890123) {
-	is_deeply (Math::GoldenBigMath::buildMultiplicationTableAsString($i), BuildMultiplikationTable($i), " * table $i");
+		is_deeply (Math::GoldenBigMath::buildMultiplicationTableAsString($i), BuildMultiplikationTable($i), " * table $i");
     } 
 
 }
 
 # --- Test Multiplication ---
 sub TestMultiplication {
+
+	diag "--- Multiplication Tests ---------------------------------------------------------------";
 
     is (Math::GoldenBigMath::Multiplication(0, 0)->GetValue(),  '+0e+0', '0 * 0'); 
     is (Math::GoldenBigMath::Multiplication(0, 1)->GetValue(),  '+0e+0', '1 * 0'); 
@@ -442,6 +462,8 @@ sub TestMultiplication {
 
 # --- Test operators + - * / < <= > >= <=>
 sub TestOperators {
+
+	diag "--- Operator Tests ---------------------------------------------------------------";
 
     my $gbm1 = new Math::GoldenBigMath(1);
     my $gbm2 = new Math::GoldenBigMath(2);

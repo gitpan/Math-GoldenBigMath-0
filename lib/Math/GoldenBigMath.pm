@@ -8,9 +8,9 @@
 #
 # handling of exponents ([eE][+-]?123456789) and decimal point "[,.]" still missing
 #
-# Ralf Peine, Sat Feb 23 11:40:50 2013
+# Ralf Peine, Mon Aug 18 17:01:06 2014
 
-$VERSION = "0.801";
+$VERSION = "0.802";
 
 use strict;
 use warnings;
@@ -850,7 +850,7 @@ Math::GoldenBigMath - Verified Big Real Number Calcualtion With Operators + - * 
 
 =head1 VERSION
 
-This documentation refers to version 0.801 of Math::GoldenBigMath
+This documentation refers to version 0.802 of Math::GoldenBigMath
 
 =head1 SYNOPSIS
 
@@ -881,7 +881,7 @@ This documentation refers to version 0.801 of Math::GoldenBigMath
 
 =head1 DESCRIPTION
 
-This class implements the algorithms I (and all other german
+This module implements the algorithms I (and all other german
 childrens) learned in my school, in german called "Schriftliches
 Rechnen". That means exact calculation with pencil and paper, before
 computers or electronical calculators come up.
@@ -908,7 +908,8 @@ More description will follow...
 
 =head1 Known Bugs / Missing Features
 
-Division is not possible yet but will come in this year (I hope to have time for it...)
+Division is not possible for floats yet but will come, when I have
+time to implement it.
 
 =head1 USAGE
 

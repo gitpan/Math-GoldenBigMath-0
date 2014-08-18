@@ -6,3 +6,6 @@ Revision history for Perl extension Math::GoldenBigMath.
 
 0.801  Sun Jul 27 10:14:34 2014
         - reduced test time by smaller loops in *.t
+
+0.802  Mon Aug 18 17:06:22 2014
+        - start test of exceptions only if module "Test::Exception" is available

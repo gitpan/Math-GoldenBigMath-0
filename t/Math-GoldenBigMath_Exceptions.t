@@ -1,10 +1,10 @@
 # perl 5
 #
-# GoldenBigMath_Exceptions.t
+# Math-GoldenBigMath_Exceptions.t
 #
 # Test of GoldenBigMath Execptions
 #
-# Ralf Peine, Mon Aug 18 17:07:23 2014
+# Ralf Peine, Tue Aug 19 08:42:14 2014
 
 use strict;
 use warnings;

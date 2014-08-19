@@ -1,10 +1,10 @@
 # perl 5
 #
-# GoldenBigMath.t
+# Math-GoldenBigMath.t
 #
 # Test of GoldenBigMath
 #
-# Ralf Peine, Mon Aug 18 17:07:23 2014
+# Ralf Peine, Tue Aug 19 08:42:01 2014
 
 use strict;
 use warnings;
@@ -32,7 +32,6 @@ TestBuildMultiplicationTableAsString ()     if !$testToStart  ||  lc($testToStar
 TestMultiplication()                        if !$testToStart  ||  lc($testToStart) eq 'mul';
 TestOperators()                             if !$testToStart  ||  lc($testToStart) eq 'op';
 
-
 if (!$testToStart  ||  lc($testToStart) eq 'exceptions') {
 	
 	my $test_exception_installed = eval {
@@ -41,7 +40,7 @@ if (!$testToStart  ||  lc($testToStart) eq 'exceptions') {
 	};
 	
 	if ($test_exception_installed) {
-		require 'Math-GoldenBigMath_Exceptions.t';		
+		require 't/Math-GoldenBigMath_Exceptions.t';		
 	}
 	else {
 		diag ("Skip exception tests");

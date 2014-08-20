@@ -4,4 +4,4 @@ MANIFEST
 README
 lib/Math/GoldenBigMath.pm
 t/Math-GoldenBigMath.t
-t/Math-GoldenBigMath_Exceptions.t
+t/Math-GoldenBigMath_Exceptions.pl

@@ -10,7 +10,7 @@
 #
 # Ralf Peine, Mon Aug 18 17:01:06 2014
 
-$VERSION = "0.803";
+$VERSION = "0.804";
 
 use strict;
 use warnings;
@@ -850,7 +850,7 @@ Math::GoldenBigMath - Verified Big Real Number Calcualtion With Operators + - * 
 
 =head1 VERSION
 
-This documentation refers to version 0.803 of Math::GoldenBigMath
+This documentation refers to version 0.804 of Math::GoldenBigMath
 
 =head1 SYNOPSIS
 

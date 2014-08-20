@@ -4,7 +4,7 @@
 #
 # Test of GoldenBigMath
 #
-# Ralf Peine, Tue Aug 19 08:42:01 2014
+# Ralf Peine, Wed Aug 20 08:50:23 2014
 
 use strict;
 use warnings;
@@ -40,7 +40,7 @@ if (!$testToStart  ||  lc($testToStart) eq 'exceptions') {
 	};
 	
 	if ($test_exception_installed) {
-		require 't/Math-GoldenBigMath_Exceptions.t';		
+		require 't/Math-GoldenBigMath_Exceptions.pl';		
 	}
 	else {
 		diag ("Skip exception tests");

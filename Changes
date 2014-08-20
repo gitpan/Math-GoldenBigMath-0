@@ -14,4 +14,8 @@ Revision history for Perl extension Math::GoldenBigMath.
 0.803  Tue Aug 19 08:42:38 2014
         - correction in call of exception test file (path missing)
 		- no change of Math::GoldenBigMath
+
+0.804  Wed Aug 20 08:50:41 2014
+        - renamed Math-GoldenBigMath_Exceptions.t to Math-GoldenBigMath_Exceptions.pl
+		- no change of Math::GoldenBigMath
 				

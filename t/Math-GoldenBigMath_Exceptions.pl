@@ -1,6 +1,6 @@
 # perl 5
 #
-# Math-GoldenBigMath_Exceptions.t
+# Math-GoldenBigMath_Exceptions.pl
 #
 # Test of GoldenBigMath Execptions
 #
